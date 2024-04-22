@@ -1,6 +1,7 @@
 import { fireEvent } from '@testing-library/react';
 import React from 'react';
 class AddUser extends React.Component {
+  userAdd = {};
   constructor(props) {
     super(props);
     this.state = {
@@ -13,7 +14,7 @@ class AddUser extends React.Component {
   }
   render() {
     return (
-      <form>
+      <form ref={(el) => (this.myForm = el)}>
         <input
           placeholder="Pavardė"
           onChange={(e) => this.setState({ lastname: e.target.value })}
@@ -38,15 +39,18 @@ class AddUser extends React.Component {
         />
         <button
           type="button"
-          onClick={() =>
-            this.props.onAdd({
+          onClick={() => {
+            this.myForm.reset();
+            this.userAdd = {
               lastname: this.state.lastname,
               firstname: this.state.firstname,
               bio: this.state.bio,
               age: this.state.age,
               isHappy: this.state.isHappy,
-            })
-          }
+            };
+            if (this.props.user) this.userAdd.id = this.props.user.id;
+            this.props.onAdd(this.userAdd);
+          }}
         >
           Pridėti
         </button>

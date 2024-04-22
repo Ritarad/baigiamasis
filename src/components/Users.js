@@ -6,14 +6,19 @@ class Users extends React.Component {
       return (
         <div>
           {this.props.users.map((el) => (
-            <User key={el.id} user={el} />
+            <User
+              onEdit={this.props.onEdit}
+              onDelete={this.props.onDelete}
+              key={el.id}
+              user={el}
+            />
           ))}
         </div>
       );
     else
       return (
         <div className='="user'>
-          <h3> Domenų nėra</h3>
+          <h3> Duomenų nėra</h3>
         </div>
       );
   }
