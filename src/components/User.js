@@ -27,9 +27,12 @@ class User extends React.Component {
         />
 
         <h3>
-          {this.user.lastmane} {this.user.firstmane}
+          {this.user.last_name} {this.user.first_name}
         </h3>
-        <p>{this.user.bio}</p>
+        <img src={this.user.avatar} />
+
+        <p>{this.user.email}</p>
+
         <p>{this.user.age}</p>
         <b>{this.user.isHappy ? 'laimingas' : 'nelabai'}</b>
 

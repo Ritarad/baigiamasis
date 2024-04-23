@@ -5,8 +5,8 @@ class AddUser extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      lastname: '',
-      firstname: '',
+      last_name: '',
+      first_name: '',
       bio: '',
       age: 1,
       isHappy: false,
@@ -17,18 +17,18 @@ class AddUser extends React.Component {
       <form ref={(el) => (this.myForm = el)}>
         <input
           placeholder="Pavardė"
-          onChange={(e) => this.setState({ lastname: e.target.value })}
+          onChange={(e) => this.setState({ last_name: e.target.value })}
         />
         <input
           placeholder="Vardas"
-          onChange={(e) => this.setState({ firstname: e.target.value })}
+          onChange={(e) => this.setState({ first_name: e.target.value })}
         />
         <input
           placeholder="Amžius"
           onChange={(e) => this.setState({ bio: e.target.value })}
         />
         <textarea
-          placeholder="Info"
+          placeholder="El paštas"
           onChange={(e) => this.setState({ age: e.target.value })}
         />
         <label htmlFor="isHappy">Laimingas?</label>
@@ -42,8 +42,8 @@ class AddUser extends React.Component {
           onClick={() => {
             this.myForm.reset();
             this.userAdd = {
-              lastname: this.state.lastname,
-              firstname: this.state.firstname,
+              last_name: this.state.last_name,
+              first_name: this.state.first_name,
               bio: this.state.bio,
               age: this.state.age,
               isHappy: this.state.isHappy,

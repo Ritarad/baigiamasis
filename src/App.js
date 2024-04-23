@@ -2,29 +2,18 @@ import React from 'react';
 import Header from './components/Header';
 import Users from './components/Users';
 import AddUser from './components/AddUser';
+import axios from 'axios';
 
+const baseUrl = 'https://reqres.in/api/users?page=1';
 class App extends React.Component {
   constructor(props) {
     super(props);
+
+    axios.get(baseUrl).then((res) => {
+      this.setState({ users: res.data.data });
+    });
     this.state = {
-      users: [
-        {
-          id: 1,
-          firstmane: 'Jon',
-          lastmane: 'Marley',
-          bio: 'lorem ipsum dolor sit amet consectetur',
-          age: 49,
-          isHappy: true,
-        },
-        {
-          d: 2,
-          firstmane: 'Elle',
-          lastmane: 'Hops',
-          bio: 'lorem ipsum dolor sit amet consectetur',
-          age: 22,
-          isHappy: false,
-        },
-      ],
+      users: [],
     };
     this.addUser = this.addUser.bind(this);
     this.deleteUser = this.deleteUser.bind(this);
