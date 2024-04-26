@@ -1,60 +1,63 @@
 import React from 'react';
 import Header from './components/Header';
-import Users from './components/Users';
-import AddUser from './components/AddUser';
-import axios from 'axios';
+import Footer from './components/Footer';
+import Items from './components/Items';
 
-const baseUrl = 'https://reqres.in/api/users?page=1';
 class App extends React.Component {
   constructor(props) {
     super(props);
-
-    axios.get(baseUrl).then((res) => {
-      this.setState({ users: res.data.data });
-    });
     this.state = {
-      users: [],
+      items: [
+        {
+          id: 1,
+          title: 'Kėdė',
+          img: 'kėdė.jpg',
+          desc: 'Prabangi valgomojo kėdė, plieninė, moderni, smėlio spalvos.',
+          category: 'chairs',
+          price: '185.99',
+        },
+        {
+          id: 2,
+          title: 'Stalas',
+          img: 'stalas.jpg',
+          desc: 'Ąžuolo masyvo stalviršis sujungtas su išskirtinio dizaino itin tvirta plieno konstrukcija.',
+          price: '255.99',
+        },
+        {
+          id: 3,
+          title: 'Sofa-lova',
+          img: 'kampas.jpg',
+          desc: 'Elegantiškas minkštas kampas Poeme suteiks novatoriškumo Jūsų namams!',
+          category: 'sofa',
+          price: '1850',
+        },
+        {
+          id: 4,
+          title: 'Lempa',
+          img: 'Lempa2.jpg',
+          desc: 'Lempa naktinis šviestuvas, pastatoma.',
+          category: 'sofa',
+          price: '120',
+        },
+        {
+          id: 1,
+          title: 'Kėdė',
+          img: 'kede2.jpg',
+          desc: 'Kompaktiška ir patogi Eichholtz kėdė puikiai tiks prie valgomojo stalo. Gražiai išformuota, kreminės spalvos.',
+          category: 'chairs',
+          price: '999.99',
+        },
+      ],
     };
-    this.addUser = this.addUser.bind(this);
-    this.deleteUser = this.deleteUser.bind(this);
-    this.editUser = this.editUser.bind(this);
   }
   render() {
     return (
-      <div>
-        <Header title="Duomenų sąrašas" />
-        <main>
-          <Users
-            users={this.state.users}
-            onEdit={this.editUser}
-            onDelete={this.deleteUser}
-          />
-        </main>
-        <aside>
-          <AddUser onAdd={this.addUser} />
-        </aside>
+      <div className="wrapper">
+        <Header />
+        <Items items={this.state.items} />
+        <Footer />
       </div>
     );
   }
-
-  deleteUser(id) {
-    this.setState({
-      users: this.state.users.filter((el) => el.id !== id),
-    });
-  }
-
-  editUser(user) {
-    let allUsers = this.state.users;
-    allUsers[user.id - 1] = user;
-
-    this.setState({ users: [] }, () => {
-      this.setState({ users: [...allUsers] });
-    });
-  }
-  addUser(user) {
-    const id = this.state.users.length + 1;
-    this.setState({ users: [...this.state.users, { id, ...user }] });
-  }
 }
-
 export default App;
