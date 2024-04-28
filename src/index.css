@@ -10,6 +10,9 @@ body {
     'Lucida Sans', Arial, sans-serif;
   font-weight: 300;
 }
+header {
+  position: relative;
+}
 .wrapper {
   width: 1280px;
   margin: 50px auto;
@@ -31,6 +34,29 @@ header ul.nav li {
 }
 header ul.nav li {
   opacity: 0.5;
+}
+header .shop-cart-button {
+  float: right;
+  cursor: pointer;
+  transition: color, transform 500ms, ease;
+}
+header .shop-cart-button:hover,
+header .shop-cart-button:hover {
+  color: #dc3d3d;
+  transform: scale(1.5);
+}
+
+header .shop-cart {
+  position: absolute;
+  top: 30px;
+  right: 0;
+  width: 450px;
+  min-height: 100px;
+  background: #fafafa;
+  box-shadow: -15px 19px 60px 17px rgba(0, 0, 0, 0.04);
+  -webkit-box-shadow: -15px 19px 60px 17px rgba(0, 0, 0, 0.04);
+  -moz-box-shadow: -15px 19px 60px 17px rgba(0, 0, 0, 0.04);
+  z-index: 1000;
 }
 header .presentation {
   margin: 50px;
@@ -108,7 +134,7 @@ main .add-to-card {
   font-weight: 600;
   transition: transform 500ms ease;
 }
-main .add-to-card: :hover {
+main .add-to-card :hover {
   transform: scale(1.5) translateY(-5px);
 }
 footer {
