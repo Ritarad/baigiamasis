@@ -51,12 +51,35 @@ header .shop-cart {
   top: 30px;
   right: 0;
   width: 450px;
-  min-height: 100px;
   background: #fafafa;
   box-shadow: -15px 19px 60px 17px rgba(0, 0, 0, 0.04);
   -webkit-box-shadow: -15px 19px 60px 17px rgba(0, 0, 0, 0.04);
   -moz-box-shadow: -15px 19px 60px 17px rgba(0, 0, 0, 0.04);
   z-index: 1000;
+  padding: 20px;
+  padding-bottom: 0;
+}
+
+header .shop-cart .item {
+  width: 100%;
+  float: left;
+  margin-bottom: 20px;
+}
+header .shop-cart .empy h2 {
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+header .shop-cart .item img {
+  width: 70px;
+  float: left;
+  margin-right: 20px;
+}
+header .shop-cart .item h2 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+header .shop-cart .item p {
+  color: #797979;
 }
 header .presentation {
   margin: 50px;
